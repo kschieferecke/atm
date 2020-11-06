@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <p>Input your pin:</p>
+    <input id="pinput"></input>
+    <button onclick="login()">Submit</button>
+    <p id="account"></p>
+
+    <script>
+        //bank account 
+        let bankAccounts = [];
+
+        function Account(pin) { //7, "string", true // { some : "object" }
+            //this = {}
+            this.pin = pin;
+            this.balance = 0;
+
+            //add a withrdraw method
+            //add a get balance method etc. 
+        }
+
+        function getAccount(pin){
+            for (let i = 0; i < bankAccounts.length; i++) {
+                if (bankAccounts[i].pin === pin) {
+                    //return the bank account that matches our pin
+                    return bankAccounts[i];
+                }
+            }
+            return null; 
+        }
+
+        function createAccount(pin){
+            let newAccount = new Account(pin);
+            bankAccounts.push(newAccount);
+            return newAccount; 
+        }
+
+        function login() {
+            let pin = parseInt(document.getElementById("pinput").value);
+
+            //if we find a pin, do something, open a menu or whatever and exit
+            //the get account function 
+            let acct = getAccount(pin);
+            if( acct === null){
+                //if the account doesn't, create with that pin
+                acct = createAccount(pin);
+            }
+            //now redirect to the menu for this account 
+            document.getElementById("account").innerHTML = "pin: " + acct.pin + "<br>" + "balance: " + acct.balance; 
+
+            return;
+        }
+
+    </script>
+
+</body>
+
+</html>
