@@ -1,35 +1,17 @@
-
+"use strict";
 //existing bank account 
-let bankAccounts = [
-  {
-    pin : 1239,
-    balance: 100.00
-  }, 
-  //1 
-  {
-    pin: 3209,
-    balance: 5.00 
-  },
-  //2 
-    {
-    pin: 2345,
-    balance: 205800.00 
-  },
-    {
-    pin: 6542,
-    balance: 163.00 
-  },
-  {
-    pin: 6732,
-    balance: 985.00 
-  }
-];
+let activeAccount;
+let bankAccounts = [];
+
 
 function getAccount(){
 	let pin = parseInt(document.getElementById("pinput").value); 
   for(let i=0; i < bankAccounts.length; i++){
     if( bankAccounts[i].pin === pin  ){
-    	document.getElementById("account").innerHTML = bankAccounts[i].balance; 
+        document.getElementById("account").innerHTML = bankAccounts[i].balance; 
+        //activeAccount = i;
+        displayMenu (); 
+       
         return; 
     //  return bankAccounts[i]; 
     }   
@@ -42,15 +24,40 @@ function getAccount(){
 function newAccount () {
     let pin = parseInt(document.getElementById("newPinput").value);
     let account = {
-        pin: pin,
-        balance: 0
+        "pin": pin,
+        "balance": 0
     };
     for(let i=0; i < bankAccounts.length; i++){
         if( bankAccounts[i].pin === pin  ){
+                    document.getElementById("balance").innerHTML = bankAccounts[i].balance;
+
            alert("use different pin!");
            return;
         } 
-    }
+        } 
     bankAccounts.push(account);
-    alert("Account Created!!");
- }
+    alert('Account Created');
+    displayMenu (); }
+
+     function displayMenu(){
+        //display menu 
+         document.getElementById("start").style.display = "none";
+         document.getElementById("menu").style.display = "block";
+     }
+
+    function displayBalance() {
+        //we need a pin x
+        document.getElementById("balance").innerHTML = bankAccounts[i].balance;
+        }
+        function returnToMain() {
+        document.getElementById("start").style.display = "block";
+        document.getElementById("menu").style.display = "none";
+
+    }
+
+    function addDeposit () {
+        let deposit = parseInt(document.getElementById("deposit").value);
+        alert('maybe');
+        bankAccounts[i].balance += deposit;
+
+    }

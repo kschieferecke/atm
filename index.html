@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=en> <!--becuase you NEED a language or VSCode will FREAK out-->
 
 <head>
 <h1>Virtual ATM!</h1>
@@ -8,16 +8,38 @@
 
 <body>
 
+<div id="start">
 <p>Input your pin:</p>
 <input id="pinput"></input>
-<button onclick="getAccount()">Submit</button> <br>
+<button onclick="getAccount()">Submit</button> <br><br>
+<p id="account"></p>
 
 <p>Create a New Account</p>
 <input id="newPinput"></input>
 <button onclick="newAccount()">Add a Pin</button>
+</div>
 
-<p id="account"><p>
+<div id="menu" style="display:none"> 
+     <button onclick="displayBalance()">Get Balance</button>
+     <p id="balance"></p>
 
+     <input id="takeMoney">
+    <button onclick="withrawal()">Withdrawal</button>
+     <p id="wbalance"></p>
+   
+     <p>How Much Would You Like To Depsoit?</p>
+    <input id="deposit">
+    <button onclick="addDeposit ()">Deposit</button>
+    <p id="addMoney"></p>
+
+    <button onclick="returnToMain ()">Return to Main Menu</button>
+        <!-- implement this: add button for returning to main menu -->
+
+    </div>
+
+<br> <br> <br> <p>Accessible PINs: 
+<br> 1239 <br> 3209 <br> 2345 <br> 6542 <br> 6732
+</p>
 <script src="script.js"></script>
 </body>
 </html>
